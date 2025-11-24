@@ -25,7 +25,7 @@
 ![HLS.js](https://img.shields.io/badge/HLS.js-1.6.13-ec407a)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Docker Ready](https://img.shields.io/badge/Docker-ready-blue?logo=docker)
-![Version](https://img.shields.io/badge/Version-5.6.1-orange)
+![Version](https://img.shields.io/badge/Version-5.6.3-orange)
 
 </div>
 
@@ -33,7 +33,7 @@
 
 ## 📢 Project Overview
 
-This project is a deeply customized version based on **MoonTV**, continuously developed from **v4.3.1** to the current **v5.6.1**, with **50+ major feature modules** and **300+ detailed optimizations** added. See [CHANGELOG](CHANGELOG) for all new features.
+This project is a deeply customized version based on **MoonTV**, continuously developed from **v4.3.1** to the current **v5.6.3**, with **50+ major feature modules** and **300+ detailed optimizations** added. See [CHANGELOG](CHANGELOG) for all new features.
 
 ### 💡 Core Enhancement Highlights
 
@@ -48,7 +48,7 @@ This project is a deeply customized version based on **MoonTV**, continuously de
 - **AI Content Recommendations**: Support for GPT-5/o series models, dynamic prompt management
 - **Multiple Card Types**: Video recommendations, YouTube videos, video link parsing
 - **TMDB Actor Search**: Complete actor search, filtering, and caching
-- **Release Calendar**: Upcoming content preview and tracking
+- **Release Calendar & Upcoming Releases**: Upcoming content preview and tracking, support favoriting upcoming releases, automatically becomes playable after release
 
 #### 💬 Danmaku Ecosystem
 - **Third-party Danmaku API**: Integrated Tencent Video, iQiyi, Youku, Bilibili platforms, smart content matching prevents trailers
@@ -69,12 +69,14 @@ This project is a deeply customized version based on **MoonTV**, continuously de
 - **Chromecast Casting**: Smart browser detection, auto-excludes OPPO, Xiaomi, Huawei, Samsung vendor browsers
 - **iPad/iOS Optimization**: HLS.js official source optimization, smart device detection, multi-attempt autoplay strategy
 - **Skip Intro/Outro**: Real-time marking button, draggable floating config window, remaining time mode, position persistence
+- **Live DVR Detection**: Auto-detect DVR/timeshift support after player loads, display seekable time range, one-click enable progress bar mode
 - **Mobile Optimization**: Volume control hover optimization, responsive controller, danmaku config desktop-only display
 - **Episode Group Scrolling**: Playback page episode selection supports scroll pagination for smooth browsing
 
 #### 📱 Interface Experience Optimization
-- **Hero Banner**: Auto-rotating hero banner on homepage with gradient backgrounds, enhanced visual appeal
+- **Hero Banner Full Category Support**: Homepage auto-rotating hero banner supports all content types (movies, series, variety shows, short dramas, anime), gradient background design
 - **Modern Navigation UI**: Desktop horizontal top navbar, mobile Liquid Glass bottom navigation, responsive switching
+- **Mobile Banner Optimization**: Swipeable card-style layout with touch gesture navigation, better suited for mobile devices
 - **Mobile Layout Optimization**: Reduced header height, tighter layout design, fixed excessive spacing issues
 - **Virtual Scrolling**: react-window 2.2.0, smooth loading for massive content, smart container size detection (ResizeObserver)
 - **Virtual Scrolling Toggle**: Gradient styles, icons, animations, user switchable display modes
@@ -166,14 +168,16 @@ This project is licensed under **CC BY-NC-SA 4.0**, with the following terms:
 - ✅ Chromecast casting (smart browser detection, excludes vendor browsers)
 - ✅ iPad/iOS optimization (HLS.js official source optimization, smart device detection, multi-attempt autoplay retry)
 - ✅ Skip intro/outro (real-time marking button, draggable floating window, remaining time mode, cross-episode support)
+- ✅ Live DVR detection (auto-detect DVR/timeshift support after player loads, display seekable time range, one-click enable progress bar mode)
 - ✅ Danmaku config panel (desktop display, mobile hidden)
 - ✅ Volume control optimization (hover area optimization, precise detection)
 - ✅ Episode switching optimization (debounce, state management, correct playback time reset)
 - ✅ Episode group scroll pagination (smooth browsing for large episode counts)
 
 ### 🎨 Interface Experience
-- ✅ Hero banner (homepage auto-rotating, gradient backgrounds, enhanced visual appeal)
+- ✅ Hero banner (homepage auto-rotating, gradient backgrounds, enhanced visual appeal, full category support for all content types)
 - ✅ Modern navigation UI (desktop horizontal top bar, mobile Liquid Glass bottom nav, responsive switching)
+- ✅ Mobile banner optimization (swipeable card-style layout, touch gesture navigation, better mobile experience)
 - ✅ Mobile layout optimization (reduced header height, tighter layout, fixed excessive spacing)
 - ✅ Virtual scrolling (react-window 2.2.0, ResizeObserver smart detection, progressive loading)
 - ✅ Virtual scrolling toggle (gradient styles, icons, animations, user switchable)
@@ -881,32 +885,55 @@ This project works with [OrionTV](https://github.com/zimplexing/OrionTV) on Andr
 
 For complete feature updates and bug fixes, see [CHANGELOG](CHANGELOG).
 
-### Latest Version: v5.6.1 (2025-11-01)
+### Latest Version: v5.6.3 (2025-11-17)
 
 #### Added
-- 🎨 Hero Banner & Modern Navigation UI: Added auto-rotating hero banner with gradient backgrounds, redesigned navigation (desktop horizontal top bar + mobile Liquid Glass bottom nav)
-- 🎯 TVBox Intelligent Search Proxy: Added TVBox intelligent search proxy with adult content filtering and UI controls
-- 📋 Quick Copy TVBox Config Buttons: Added quick copy buttons for TVBox config modes to simplify configuration
-- 🔧 Adult Content Path Prefix Support: Added path prefix support for adult content filtering
-- 📤 Video Source Export Format Selection: Added export format selection supporting array and config file formats
-- ⏱️ Auto-dismiss for Batch Adult Marking: Added auto-dismiss timer to batch adult content marking success alert
+- 🎉 Short Drama Multi-source Search: Enabled multi-source search for short drama content with detail integration triggered from banners and cards
+- 🎨 Enhanced Virtual Scrolling: Added auto-scroll and image preloading to improve browsing experience
+- 📊 Smart Distribution Algorithm: Implemented intelligent time distribution algorithm for upcoming releases section
 
 #### Improved
-- 📱 Fix Excessive Mobile Spacing: Reduced mobile header height and applied tighter layout, fixing excessive spacing across all pages
-- 🎨 Optimize Short Drama Loading Indicator: Improved loading indicator display for short drama page in light mode
+- 🔐 SessionTracker Compatibility Enhancement: Support both auth and user_auth cookies for improved session tracking stability
+- 📈 Release Calendar API Limit Increase: Increased from 20 to 100 to show more upcoming content
+- 🔍 Upcoming Time Range Extension: Extended from 30 to 90 days for longer-term content preview
+- 📅 Today's Release Hard Limit: Prevent today's releases from dominating the upcoming releases section
+- 📊 Upcoming Distribution Algorithm Improvement: Optimized distribution of upcoming release content
+- 📺 Channel Name Scrolling Animation: Added scrolling text animation for channel names in live view
 
 #### Fixed
-- 🔧 Fix Card & Badge z-index Hierarchy: Corrected z-index hierarchy for cards and badges to prevent layering issues
-- 🎭 Reduce Episode Badge z-index: Reduced episode badge z-index to prevent modal overlay issues
-- 📱 Increase Mobile PageLayout Bottom Padding: Increased bottom padding in PageLayout for mobile devices to improve layout
-- 🔝 Increase AI Modal z-index: Increased AI recommendation modal z-index to prevent badge overlap
-- 🖼️ Fix Douban Poster 403 Error: Route Douban poster images through proxy to prevent 403 forbidden errors
-- 🎬 Remove White Background Box: Removed white background box from short drama page for better visual effect
-- 🔄 Revert Loading Indicator Style: Reverted style improvements for short drama loading indicator in light mode
-- 🐛 Fix Webkit Cursor & iPadOS Progress Bar: Fixed Webkit cursor display and iPadOS progress bar interaction issues
+- 🔧 Fixed rendering 0 from videoDoubanId check: Prevent incorrect display when Douban ID is 0
+- 🎯 Smart Source Filtering Implementation: Auto-filter zero values in class field and sources, as well as sources without episodes
+- 🚫 Filter Invalid Data: Clean zero values in class field and sources without episode counts
+- 📺 Update availableSources State: Ensure source selector only shows valid video sources
+- 🔝 Improve Fullscreen Button Visibility: Optimize fullscreen button display on small screens
+- 🎪 Hide Placeholder Episodes in Favorites: Avoid showing 99 episode placeholder for short dramas to prevent user confusion
+- 🚫 Prevent Short Drama Source Misassignment: Ensure short drama sources are not added to non-short drama content
+- 🎯 Fix VideoCard Badge Display: Support proper badge display for all release status types
+- ⏰ Resolve Date Comparison Timezone Issue: Fix timezone-related date judgment errors in upcoming releases filter
+- 🔗 Fix HeroBanner Play Link: Add stype parameter for correct navigation
+- 🎯 Fix HeroBanner Search Matching: Use douban_id instead of title matching for improved search accuracy
+- 🎬 Improve Short Film Title Search: Optimize fuzzy search algorithm accuracy for short film titles
+- 🔝 Fix Skip Button z-index: Prevent skip button from covering navigation bar
+- 📍 Fix Skip Button Positioning: Keep skip button at fixed position within player container
+- ❤️ Add Dedicated Favorite Heart Button: Add dedicated clickable heart button for favorites panel
+- 🎯 Hide Favorite Hover Buttons: Prevent floating heart button from interfering with user operations
+- 🗑️ Remove Duplicate Favorites Panel Elements: Clean duplicate heart and date labels in favorites panel
+- 🧹 Clean Released Content Play URLs: Ensure released upcoming content can play normally
+- 🏷️ Smart Source Tag System: Support dynamic status and color theme source tags
+- 🎨 Dynamic Release Badges: Display badges dynamically based on release status and hide placeholder episode counts
+- ▶️ Enable Released Favorite Playback: Smart detection of whether upcoming content has been released and enable playback
+- 🔄 Smart Deduplication and Dynamic Status: Optimize deduplication and status updates for upcoming releases
+- 🎯 Enhanced M3U8 Ad Filtering: Add SCTE-35 detection to improve ad filtering effectiveness
+- 🔧 Fix Subtitle Deduplication Logic: Improve title duplicate detection algorithm
+- 📊 Fix Card z-index Conflicts: Prevent all card components from covering navigation bar
+- 📱 Fix VideoCard Hover z-index: Resolve VideoCard covering navigation bar on hover/click
+- 🎯 Fix Tooltip z-index Conflicts: Ensure VideoCard tooltips don't conflict with navigation bar
+- 🔧 Fix Short Drama Source Display: Ensure short drama sources display correctly in source selector
 
 ### Major Milestone Versions
 
+- **v5.6.3**: Short Drama Multi-source Search, Smart Source Filtering, Upcoming Smart Distribution, Comprehensive z-index Conflict Fixes
+- **v5.6.2**: Upcoming Release Calendar, Hero Banner Full Category Support, Live DVR Detection, Mobile Banner Optimization
 - **v5.6.1**: Hero Banner & Modern Navigation UI, TVBox Intelligent Search Proxy, Export Format Selection
 - **v5.6.0**: Telegram Magic Link authentication, Source Browser & Testing Module, video source import/export
 - **v5.5.0**: User level system, release calendar, inactive user cleanup
